@@ -1,0 +1,18 @@
+{
+  "name": "bank-cdc",
+  "config": {
+    "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+    "database.hostname": "postgres",
+    "database.port": "5432",
+    "database.user": "debezium",
+    "database.password": "${file:/etc/connect/secrets.properties:pg.password}",
+    "database.dbname": "bank",
+    "topic.prefix": "bank",
+    "plugin.name": "pgoutput",
+    "slot.name": "debezium_bank",
+    "publication.name": "dbz_bank",
+    "publication.autocreate.mode": "disabled",
+    "table.include.list": "public.accounts,public.transactions",
+    "decimal.handling.mode": "string"
+  }
+}
